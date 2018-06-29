@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>桌面应用测试</title>
+
+	<style type="text/css">
+		#first {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+		    transform: translate(-50%,-50%);
+
+		    width: 180px;
+		    height: 50px;
+		    border-radius: 10px;
+		    border:none;
+		}
+		#input-area {
+			display: none;
+		    position: fixed;
+		    top: 0;
+		    left: 0;
+		    bottom: 0;
+		    right: 0;
+		    background: rgba(0,0,0,0.8);
+		}
+		.input-box {
+		    position: absolute;
+		    top: 50%;
+		    left: 50%;
+		    transform: translate(-50%,-50%);
+		    color: #fff;
+		    width: 80%;
+		}
+		.input-box p:first-child {
+			font-size: 20px;
+		}
+		.input-box input {
+			height: 30px;
+			width: 180px;
+			margin-top: 15px;
+			outline: none;
+		    border: none;
+		    padding-left: 15px;
+		}
+		#input-txt {
+			height: 30px;
+			outline: none;
+		    border: 1px solid #ddd;
+		    padding-left: 15px;
+		}
+		.input-box button {
+			width: 100px;
+		    height: 30px;
+		    border-radius: 10px;
+		    border:none;
+		}
+		#divsecond {
+			display: none;
+		}
+		.img img:first-child{
+			float: left;
+		}
+		.img img:last-child{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<button id="first">点我测试你是智障吗？</button>
+
+	<div id="divsecond">
+		<ul>
+			<li>
+				<p>Q: 请问你是公的还是母的？</p>
+				<p>
+					A：<input type="text" id='input-txt'>
+
+					<button id="fist-btn-submit">提交</button>
+				</p>
+			</li>
+		</ul>
+	</div>
+
+	<div id='input-area'>
+		<div class="input-box">
+			<p>输入你的测试监护人：<br><input type="text" id="input-test"></p>
+			<p><button class="ok-btn">提交</button></p>
+		</div>
+	</div>
+	
+	<div class="img">
+		<img src="img/1.png" >
+		<img src="img/2.png">
+	</div>
+	<script type="text/javascript">
+		document.getElementById('first').addEventListener('click', function () {
+			document.getElementById('input-area').style.display = 'block'
+		}, false)
+
+		document.getElementById('fist-btn-submit').addEventListener('click', submitMsg, false)
+		document.getElementsByClassName('ok-btn')[0].addEventListener('click', sureName, false)
+
+		function sureName(argument) {	
+			var name = document.getElementById('input-test').value
+
+		    if( name == '迩伶贰' ){
+		    	var truthBeTold = window.confirm("单击“确定”继续。单击“取消”停止。"); 
+				if (truthBeTold) { 
+					document.getElementById('divsecond').style.display = 'block'
+					document.getElementById('first').style.display = 'none'
+					document.getElementById('input-area').style.display = 'none'
+				} else {
+					window.alert("再见啦！"); 
+		        }
+		    } else {
+		        alert("输入错误,你可以输入ta 的网名");
+		        document.getElementById('input-test').value = ''
+		        testFunc()
+		    }
+
+		}
+
+		function submitMsg () {
+			var txt = document.getElementById('input-txt').value
+			if (txt == '不是母的') {
+				window.alert("对，这才是我的小可爱！"); 
+		        document.getElementById('input-txt').value = ''
+			} else {
+				window.alert("你已经没救了！"); 
+				document.getElementById('input-txt').value = ''
+			}
+		}
+	</script>
+</body>
+</html>
